@@ -12,6 +12,12 @@ return [
     | these language lines according to your application's requirements.
     |
     */
+    // form
+    'Log in' => 'تسجيل الدخول',
+    'Email' => 'البريد الإلكتروني',
+    'Password' => 'كلمة المرور',
+    'Remember me' => 'ابقني مسجلا',
+    'Forgot your password?' => 'هل نسيت كلمة المرور؟',
 
     'failed' => 'بيانات الدخول غير صحيحة.',
     'password' => 'كلمة المرور التي أدخلتها غير صحيحة.',
