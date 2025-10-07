@@ -35,4 +35,8 @@ return [
     'Already registered?' => 'هل لديك حساب بالفعل؟',
     'Register' => 'تسجيل',
 
+    'This is a secure area of the application. Please confirm your password before continuing.' => 'هذه منطقة حساسة في التطبيق. يرجى تأكيد كلمة المرور قبل المتابعة.',
+    'Password' => 'كلمة المرور',
+    'Confirm' => 'تأكيد',
+
 ];
