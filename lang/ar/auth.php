@@ -39,4 +39,13 @@ return [
     'Password' => 'كلمة المرور',
     'Confirm' => 'تأكيد',
 
+
+    'Reset Password' => 'إعادة تعيين كلمة المرور',
+
+    'A new verification link has been sent to the email address you provided during registration.' => 'تم إرسال رابط تحقق جديد إلى البريد الإلكتروني الذي استخدمته أثناء التسجيل.',
+
+    'Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.' => 'شكرًا لتسجيلك! قبل البدء، يرجى تأكيد بريدك الإلكتروني عبر الرابط الذي أرسلناه إليك. إذا لم يصلك البريد، سنرسل لك رابط تحقق آخر .',
+
+    'Resend Verification Email' => 'إعادة إرسال رابط التحقق',
+    'Log Out' => 'تسجيل الخروج',
 ];
