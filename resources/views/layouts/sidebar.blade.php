@@ -1,8 +1,11 @@
 <aside class="w-52 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col">
-    <div
-        class="h-14 flex items-center justify-center border-b border-gray-200 dark:border-gray-800 text-lg font-semibold text-gray-800 dark:text-gray-100">
-        {{ config('app.name', 'Laravel') }}
-    </div>
+    <a href="{{ route('dashboard') }}">
+        <div
+            class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-800 text-lg font-semibold text-gray-800 dark:text-gray-100">
+            {{ config('app.name', 'Laravel') }}
+        </div>
+    </a>
+
 
     <nav class="flex-1 overflow-y-auto px-2 py-3">
         <ul class="space-y-1">
