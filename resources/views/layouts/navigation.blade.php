@@ -1,4 +1,5 @@
-<nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+<nav x-data="themeToggle" x-init="init()"
+    class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -16,10 +17,28 @@
                         {{ __('nav.dashboard') }}
                     </x-nav-link>
                 </div>
+
             </div>
+            <!-- Theme Toggle -->
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <!-- Theme Toggle Button -->
+                <button id="theme-toggle" @click="toggleTheme()"
+                    class="ml-4  p-2 rounded-full  transition-colors duration-300 dark:text-white ease-in-out focus:outline-none">
+                    <svg x-show="isDark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="size-4 ">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                    </svg>
+                    <svg x-show="!isDark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="1.5" stroke="currentColor" class="size-4">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+                    </svg>
+
+
+                </button>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
@@ -41,6 +60,8 @@
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('nav.profile') }}
                         </x-dropdown-link>
+
+
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
@@ -92,7 +113,6 @@
                     {{ __('nav.profile') }}
                 </x-responsive-nav-link>
 
-                <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
@@ -105,4 +125,32 @@
             </div>
         </div>
     </div>
+
+    <!-- Alpine Theme Script -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('themeToggle', () => ({
+                isDark: localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches),
+
+                init() {
+                    this.setTheme();
+                },
+
+                toggleTheme() {
+                    this.isDark = !this.isDark;
+                    localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
+                    this.setTheme();
+                },
+
+                setTheme() {
+                    if (this.isDark) {
+                        document.documentElement.classList.add('dark');
+                    } else {
+                        document.documentElement.classList.remove('dark');
+                    }
+                }
+            }));
+        });
+    </script>
 </nav>
